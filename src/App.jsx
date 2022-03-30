@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
+import _ from 'lodash';
 import InputField from './Components/InputField';
 import SelectTodo from './Components/SelectTodo';
 import TodosWrapper from './Components/TodosWrapper';
@@ -10,15 +11,13 @@ class App extends Component {
     todoTxt: '',
     todoType: 'all',
     prevTodoType: 'all',
-    prevTodosLength: 0,
+    prevTodos: 0,
     todos: [],
     filteredTodos: [],
   };
 
-  inputHandler = ({ target }) => {
-    const { name } = target;
-    this.setState({ [name]: target.value });
-  };
+  inputHandler = ({ target: { name, value } }) =>
+    this.setState({ [name]: value });
 
   addTodoHandler = (e) => {
     e.preventDefault();
@@ -44,26 +43,39 @@ class App extends Component {
     }));
   };
 
-  DoneTodoHandler = (todoId) => {
+  doneTogglerHandler = (todoId) => {
     this.setState((prevState) => ({
-      filteredTodos: prevState.filteredTodos.map((todo) =>
+      todos: prevState.todos.map((todo) =>
         todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
       ),
     }));
- };
+  };
 
-   EditHandler = (todoId) => {
-  this.setState((prevState) => ({
-    filteredTodos: prevState.filteredTodos.map((todo) =>
-      todo.id === todoId ? { ...todo, editable: !todo.editable } : todo
-    ),
-  }));
+  enableEditHandler = (todoId) => {
+    this.setState((prevState) => ({
+      todos: prevState.todos.map((todo) =>
+        todo.id === todoId ? { ...todo, editable: true } : todo
+      ),
+    }));
+  };
+
+  updateTodoHandler = ({ target: { textContent }, key }, todoId) => {
+    console.log(key);
+    if (key === 'Enter') {
+      this.setState((prevState) => ({
+        todos: prevState.todos.map((todo) =>
+          todo.id === todoId
+            ? { ...todo, value: textContent, editable: false }
+            : todo
+        ),
+      }));
+    }
   };
 
   componentDidUpdate = () => {
-    const { todoType, prevTodoType, todos, prevTodosLength } = this.state;
+    const { todoType, prevTodoType, todos, prevTodos } = this.state;
 
-    if (prevTodosLength !== todos.length || prevTodoType !== todoType) {
+    if (!_.isEqual(prevTodos, todos) || prevTodoType !== todoType) {
       let newTodos = [];
 
       switch (todoType) {
@@ -79,7 +91,7 @@ class App extends Component {
 
       this.setState({
         filteredTodos: newTodos,
-        prevTodosLength: todos.length,
+        prevTodos: todos,
         prevTodoType: todoType,
       });
     }
@@ -102,9 +114,9 @@ class App extends Component {
         <TodosWrapper
           filteredTodos={filteredTodos}
           deleteTodoHandler={this.deleteTodoHandler}
-          DoneTodoHandler={this.DoneTodoHandler}
-          EditHandler={this.EditHandler}
-          
+          doneTogglerHandler={this.doneTogglerHandler}
+          enableEditHandler={this.enableEditHandler}
+          updateTodoHandler={this.updateTodoHandler}
         />
       </>
     );
