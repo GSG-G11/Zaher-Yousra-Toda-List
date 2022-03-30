@@ -1,12 +1,14 @@
 const Todo = (props) => {
   const {
-    todoItem: { value, completed },
+    todoItem: { value, completed, editable },
   } = props;
 
   return (
     <>
       <div className={completed ? 'todo completed' : 'todo'}>
-        <li className="todo-item">{value}</li>
+        <li className="todo-item" contentEditable={editable}>
+          {value}
+        </li>
         <button className="edit-btn">
           <i className="far fa-edit"></i>
         </button>
