@@ -60,7 +60,6 @@ class App extends Component {
   };
 
   updateTodoHandler = ({ target: { textContent }, key }, todoId) => {
-    console.log(key);
     if (key === 'Enter') {
       this.setState((prevState) => ({
         todos: prevState.todos.map((todo) =>
