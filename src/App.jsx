@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import InputField from './Components/InputField';
 import SelectTodo from './Components/SelectTodo';
+import TodosWrapper from './Components/TodosWrapper';
 import './App.css';
 
 class App extends Component {
@@ -29,7 +30,7 @@ class App extends Component {
         return {
           todos: [
             ...prevState.todos,
-            { value: txt, completed: false, id: nanoid(20) },
+            { value: txt, completed: false, editable: false, id: nanoid(20) },
           ],
           todoTxt: '',
         };
@@ -63,7 +64,7 @@ class App extends Component {
   };
 
   render() {
-    const { todoTxt, todoType } = this.state;
+    const { todoTxt, todoType, filteredTodos } = this.state;
 
     return (
       <>
@@ -76,6 +77,7 @@ class App extends Component {
           />
           <SelectTodo inputHandler={this.inputHandler} todoType={todoType} />
         </form>
+        <TodosWrapper filteredTodos={filteredTodos} />
       </>
     );
   }

@@ -1,6 +1,4 @@
-import React from 'react';
-
-function SelectTodo(props) {
+const SelectTodo = (props) => {
   const { todoType, inputHandler } = props;
 
   return (
@@ -19,6 +17,6 @@ function SelectTodo(props) {
       </div>
     </>
   );
-}
+};
 
 export default SelectTodo;
