@@ -1,6 +1,7 @@
 const Todo = (props) => {
   const {
-    todoItem: { value, completed, editable },
+    todoItem: { value, completed, editable, id },
+    deleteTodoHandler,
   } = props;
 
   return (
@@ -15,7 +16,7 @@ const Todo = (props) => {
         <button className="complete-btn">
           <i className="fas fa-check"></i>
         </button>
-        <button className="trash-btn">
+        <button className="trash-btn" onClick={() => deleteTodoHandler(id)}>
           <i className="fas fa-trash"></i>
         </button>
       </div>
