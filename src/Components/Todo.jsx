@@ -1,19 +1,19 @@
 const Todo = (props) => {
   const {
     todoItem: { value, completed, editable, id },
-    deleteTodoHandler,EditHandler,
+    deleteTodoHandler,DoneTodoHandler ,EditHandler,
   } = props;
 
   return (
     <>
       <div className={completed ? 'todo completed' : 'todo'}>
-        <li className="todo-item" contentEditable={editable}>
+        <li className="todo-item" contentEditable={editable} suppressContentEditableWarning={true}>
           {value}
         </li>
         <button className="edit-btn" onClick={() =>EditHandler(id)}>
           <i className="far fa-edit"></i>
         </button>
-        <button className="complete-btn">
+        <button className="complete-btn" onClick={() =>DoneTodoHandler(id)}>
           <i className="fas fa-check"></i>
         </button>
         <button className="trash-btn" onClick={() => deleteTodoHandler(id)}>

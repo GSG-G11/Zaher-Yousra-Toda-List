@@ -44,7 +44,15 @@ class App extends Component {
     }));
   };
 
-EditHandler = (todoId) => {
+  DoneTodoHandler = (todoId) => {
+    this.setState((prevState) => ({
+      filteredTodos: prevState.filteredTodos.map((todo) =>
+        todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
+      ),
+    }));
+ };
+
+   EditHandler = (todoId) => {
   this.setState((prevState) => ({
     filteredTodos: prevState.filteredTodos.map((todo) =>
       todo.id === todoId ? { ...todo, editable: !todo.editable } : todo
@@ -94,6 +102,7 @@ EditHandler = (todoId) => {
         <TodosWrapper
           filteredTodos={filteredTodos}
           deleteTodoHandler={this.deleteTodoHandler}
+          DoneTodoHandler={this.DoneTodoHandler}
           EditHandler={this.EditHandler}
           
         />
