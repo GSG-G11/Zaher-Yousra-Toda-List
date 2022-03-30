@@ -1,7 +1,7 @@
 import Todo from './Todo';
 
 const TodosWrapper = (props) => {
-  const { filteredTodos, deleteTodoHandler, EditHandler } = props;
+  const { filteredTodos, deleteTodoHandler,DoneTodoHandler , EditHandler } = props;
 
   return (
     <>
@@ -13,7 +13,7 @@ const TodosWrapper = (props) => {
                 key={todoItem.id}
                 todoItem={todoItem}
                 deleteTodoHandler={deleteTodoHandler}
-                
+                DoneTodoHandler={DoneTodoHandler}
                 EditHandler = {EditHandler}
               />
             );
