@@ -11,7 +11,7 @@ class App extends Component {
     todoTxt: '',
     todoType: 'all',
     prevTodoType: 'all',
-    prevTodos: 0,
+    prevTodos: [],
     todos: [],
     filteredTodos: [],
   };
