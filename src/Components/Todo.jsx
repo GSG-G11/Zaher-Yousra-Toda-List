@@ -7,7 +7,7 @@ const Todo = (props) => {
   return (
     <>
       <div className={completed ? 'todo completed' : 'todo'}>
-        <li className="todo-item" contentEditable={editable}>
+        <li className="todo-item" contentEditable={editable} suppressContentEditableWarning={true}>
           {value}
         </li>
         <button className="edit-btn" onClick={() =>EditHandler(id)}>
