@@ -30,7 +30,7 @@ class App extends Component {
         return {
           todos: [
             ...prevState.todos,
-            { value: txt, completed: false, id: nanoid(20) },
+            { value: txt, completed: false, editable: false, id: nanoid(20) },
           ],
           todoTxt: '',
         };
