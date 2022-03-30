@@ -38,6 +38,12 @@ class App extends Component {
     }
   };
 
+  deleteTodoHandler = (todoId) => {
+    this.setState((prevState) => ({
+      todos: prevState.todos.filter((todo) => todo.id !== todoId),
+    }));
+  };
+
   componentDidUpdate = () => {
     const { todoType, prevTodoType, todos, prevTodosLength } = this.state;
 
@@ -77,7 +83,10 @@ class App extends Component {
           />
           <SelectTodo inputHandler={this.inputHandler} todoType={todoType} />
         </form>
-        <TodosWrapper filteredTodos={filteredTodos} />
+        <TodosWrapper
+          filteredTodos={filteredTodos}
+          deleteTodoHandler={this.deleteTodoHandler}
+        />
       </>
     );
   }
