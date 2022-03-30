@@ -44,6 +44,14 @@ class App extends Component {
     }));
   };
 
+EditHandler = (todoId) => {
+  this.setState((prevState) => ({
+    filteredTodos: prevState.filteredTodos.map((todo) =>
+      todo.id === todoId ? { ...todo, editable: !todo.editable } : todo
+    ),
+  }));
+  };
+
   componentDidUpdate = () => {
     const { todoType, prevTodoType, todos, prevTodosLength } = this.state;
 
@@ -86,6 +94,8 @@ class App extends Component {
         <TodosWrapper
           filteredTodos={filteredTodos}
           deleteTodoHandler={this.deleteTodoHandler}
+          EditHandler={this.EditHandler}
+          
         />
       </>
     );
