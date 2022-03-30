@@ -1,44 +1,81 @@
-import { nanoid } from "nanoid";
-import { Component } from "react";
-import InputField from "./Components/InputField";
+import { Component } from 'react';
+import { nanoid } from 'nanoid';
+import InputField from './Components/InputField';
+import SelectTodo from './Components/SelectTodo';
+import './App.css';
 
 class App extends Component {
   state = {
+    todoTxt: '',
+    todoType: 'all',
+    prevTodoType: 'all',
+    prevTodosLength: 0,
     todos: [],
-    textTodo: "",
+    filteredTodos: [],
   };
 
-  handleInput = (e) => {
-    this.setState({ textTodo: e.target.value });
+  inputHandler = ({ target }) => {
+    const { name } = target;
+    this.setState({ [name]: target.value });
   };
 
-  HandleAddTodo = (e) => {
+  addTodoHandler = (e) => {
     e.preventDefault();
-    const text = this.state.textTodo;
-    if (text !== "") {
-      console.log(this.state.todos);
-      const newTodos = [
-        ...this.state.todos,
-        { text: text, completed: false, id: nanoid(20) },
-      ];
-      console.log(newTodos);
+    const { todoTxt } = this.state;
+    const txt = todoTxt.trim();
+
+    if (txt !== '') {
+      this.setState((prevState) => {
+        return {
+          todos: [
+            ...prevState.todos,
+            { value: txt, completed: false, id: nanoid(20) },
+          ],
+          todoTxt: '',
+        };
+      });
+    }
+  };
+
+  componentDidUpdate = () => {
+    const { todoType, prevTodoType, todos, prevTodosLength } = this.state;
+
+    if (prevTodosLength !== todos.length || prevTodoType !== todoType) {
+      let newTodos = [];
+
+      switch (todoType) {
+        case 'all':
+          newTodos = [...todos];
+          break;
+        case 'completed':
+          newTodos = todos.filter((todo) => todo.completed);
+          break;
+        default:
+          newTodos = todos.filter((todo) => !todo.completed);
+      }
+
       this.setState({
-        todos: newTodos,
-        textTodo: "",
+        filteredTodos: newTodos,
+        prevTodosLength: todos.length,
+        prevTodoType: todoType,
       });
     }
   };
 
   render() {
+    const { todoTxt, todoType } = this.state;
+
     return (
       <>
         <h1>TODO LIST</h1>
-        <InputField
-          todos={this.state.todos}
-          textTodo={this.state.textTodo}
-          handleInput={this.handleInput}
-          HandleAddTodo={this.HandleAddTodo}
-        />
+        <form>
+          <InputField
+            todoTxt={todoTxt}
+            inputHandler={this.inputHandler}
+            addTodoHandler={this.addTodoHandler}
+          />
+          <SelectTodo inputHandler={this.inputHandler} todoType={todoType} />
+        </form>
       </>
     );
   }

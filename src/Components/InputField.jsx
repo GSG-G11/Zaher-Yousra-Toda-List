@@ -1,21 +1,18 @@
-import { Component } from "react";
-
 const InputField = (props) => {
-  const { todos, textTodo, handleInput, HandleAddTodo } = props;
+  const { todoTxt, inputHandler, addTodoHandler } = props;
   return (
-    <form>
-      <div className="input-task">
-        <input
-          onChange={handleInput}
-          value={textTodo}
-          type="text"
-          className="todo-input"
-        />
-        <button className="todo-button" type="submit" onClick={HandleAddTodo}>
-          <i className="fas fa-plus-square"></i> Add
-        </button>
-      </div>
-    </form>
+    <div className="input-task">
+      <input
+        name="todoTxt"
+        onChange={inputHandler}
+        value={todoTxt}
+        type="text"
+        className="todo-input"
+      />
+      <button className="todo-button" type="submit" onClick={addTodoHandler}>
+        <i className="fas fa-plus-square"></i>
+      </button>
+    </div>
   );
 };
 
