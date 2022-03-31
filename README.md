@@ -1,5 +1,22 @@
 <div id="top"></div>
 
+[contributors-shield]: https://img.shields.io/github/contributors/GSG-G11/zaher-yousra-todo-list?style=for-the-badge
+[contributors-url]: https://github.com/GSG-G11/zaher-yousra-todo-list/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/GSG-G11/zaher-yousra-todo-list?style=for-the-badge
+[forks-url]: https://github.com/GSG-G11/zaher-yousra-todo-list/network/members
+[stars-shield]: https://img.shields.io/github/stars/GSG-G11/zaher-yousra-todo-list?style=for-the-badge
+[stars-url]: https://github.com/GSG-G11/zaher-yousra-todo-list/stargazers
+[issues-shield]: https://img.shields.io/github/issues/GSG-G11/zaher-yousra-todo-list?style=for-the-badge
+[issues-url]: https://github.com/GSG-G11/zaher-yousra-todo-list/issues
+
+[![Contributors][contributors-shield]][contributors-url]
+<br />
+[![Forks][forks-shield]][forks-url]
+<br />
+[![Stargazers][stars-shield]][stars-url]
+<br />
+[![Issues][issues-shield]][issues-url]
+
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -10,7 +27,7 @@
 <h3 align="center">Todo List App</h3>
 
   <p align="center">
-    It's an app that allows users to add, remove and organize thier tasks.
+    Todo List is an app that allows users to add, check and delete tasks in order to organize their life.
     <br />
     <br />
     <br />
@@ -34,6 +51,12 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
+     <li>
+          <a href="#user-journey">User Journey</a>
+      </li>
+      <li>
+          <a href="#user-stories">User Stories</a>
+      </li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
@@ -41,12 +64,9 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-      <li>
-          <a href="#user-journey">User Journey</a>
-      </li>
-      <li>
-          <a href="#user-stories">User Stories</a>
-      </li>
+    <li>
+      <a href="#team">Contributors</a>
+    </li>
   </ol>
 </details>
 
@@ -54,7 +74,6 @@
 ## About The Project
 
 <img src="https://i.imgur.com/1CcYocR.png" />
-
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -66,6 +85,25 @@
 - [React.js](https://reactjs.org/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+## User Journey <span id="user-journey"></span>
+
+When opening our website, you'll be faced with an input field, you can fill it out and add your tasks.
+Your added task will be initially placed in the `All` section, if you want to filter your tasks based on their state of completion, you can filter them using the select box next to the input field.
+You can mark a task as done by clicking the checkmark, clicking the checkmark again, will uncheck the task.
+Also, you can edit your tasks by clicking the edit button, and of course, you can delete your tasks.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## User Stories <span id="user-stories"></span>
+
+### As a user:
+- I should be able to add a new to-do task.
+- I should be able to edit my todos.
+- I should be able to delete my todos.
+- I should be able to mark a todo as done and unmark it again.
+- I want to see all of my to-do tasks.
+- I want to filter my tasks based on their case of completion.
 
 <!-- GETTING STARTED -->
 ## Getting Started <span id="getting-started"></span>
@@ -93,18 +131,7 @@ This is an example of how to list things you need to use the software and how to
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## User Journey <span id="user-journey"></span>
-
-When you open the application, you will initially find a page with an input to enter the task.
-After clicking on the "Add" button, the task will be added to the list tasks.
-Next to each task appears, an edit button, a delete button, and a button to end the task.
-
-## User Stories <span id="user-stories"></span>
-
-- As a User, I should be able to add a new todo.
-- As a User, I should be able to edit any todo.
-- As a User, I should be able to delete any todo I don't want.
-- As a User, I should be able to mark a todo as done.
-- As a User, I should be able to see all todo's
-
+## Contributors <span id="team"></span>
+- Feel free to contact us [@zaher-aa](https://github.com/zaher-aa), [@yousrakhaleel](https://github.com/yousrakhaleel)
+  
 <p align="right">(<a href="#top">back to top</a>)</p>
